@@ -25,8 +25,9 @@ public class Demo {
         }catch (Exception e){
             transaction.rollback();
         }
-        Customer c = session.get(Customer.class, 1);
+        Customer c = session.get(Customer.class, 2);
         c.setName("New Name");
+        // new transaction because the first transaction is already committed
         Transaction transaction2 = session.beginTransaction();
         try{
             Integer id = (Integer) session.save(ob1);
